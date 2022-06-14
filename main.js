@@ -1,23 +1,22 @@
-const ctx = document.getElementById("myChart").getContext("2d");
-const myChart = new Chart(ctx, {
-  type: "line",
-  data: {
-    labels: ["Purple", "Orange", "salmon"],
-    datasets: [
-      {
-        label: "# of Votes",
-        data: [5, 3, 4],
-        backgroundColor: ["rgba(153, 102, 255, 0.2)", "rgba(255, 159, 64, 0.2)", "rgba(255, 159, 57, 0.2)"],
-        borderColor: ["rgba(153, 102, 255, 1)", "rgba(255, 159, 64, 1)", "rgba(255, 159, 64, 0.2)"],
-        borderWidth: 1,
-      },
+new Chartist.Line(
+  ".ct-chart",
+  {
+    labels: [1, 2, 3, 4, 5, 6, 7, 8],
+    series: [
+      [1, 2, 3, 1, -2, 0, 1, 0],
+      [-2, -1, -2, -1, -3, -1, -2, -1],
+      [0, 0, 0, 1, 2, 3, 2, 1],
+      [3, 2, 1, 0.5, 1, 0, -1, -3],
     ],
   },
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true,
-      },
+  {
+    high: 3,
+    low: -3,
+    fullWidth: true,
+    // As this is axis specific we need to tell Chartist to use whole numbers only on the concerned axis
+    axisY: {
+      onlyInteger: true,
+      offset: 20,
     },
-  },
-});
+  }
+);
